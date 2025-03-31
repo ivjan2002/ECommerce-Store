@@ -1,4 +1,5 @@
 using BestStoreMVC.Models;
+using BestStoreMVC.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,16 +7,17 @@ namespace BestStoreMVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDBContext context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDBContext context)
         {
-            _logger = logger;
+           
         }
 
         public IActionResult Index()
-        {
-            return View();
+       {
+            var products = context.Products.OrderByDescending(p => p.Id).Take(4).ToList();
+            return View(products);
         }
 
         public IActionResult Privacy()
