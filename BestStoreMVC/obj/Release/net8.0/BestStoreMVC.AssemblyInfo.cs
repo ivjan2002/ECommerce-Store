@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BestStoreMVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb5253b0bda9d168c4a363ab021da6f42a9dcfb9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ecfc60494b47ce8bc1229a5da944725743001baf")]
 [assembly: System.Reflection.AssemblyProductAttribute("BestStoreMVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BestStoreMVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

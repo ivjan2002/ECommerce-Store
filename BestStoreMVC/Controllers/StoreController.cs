@@ -4,17 +4,67 @@ namespace BestStoreMVC.Controllers
 {
     public class StoreController : Controller {
 
-        public readonly ApplicationDBContext context;
+        private readonly ApplicationDBContext context;
+        private readonly int pageSize = 8;
 
         public StoreController(ApplicationDBContext context)
         {
             this.context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int pageIndex,string?search,string?brand,search?category,search?sort)
         {
-            var products = context.Products.OrderByDescending(p=>p.Id).ToList();
+            IQueryable<Product> query = context.Products;
+
+            if(search!=null && search.Length > 0)
+            {
+                query = query.Where(p => p.Name.Contains(search));
+            }
+
+            if (brand != null && brand.Length > 0)
+            {
+                query = query.Where(p => p.Name.Contains(brand));
+            }
+
+            if (category != null && category.Length > 0)
+            {
+                query = query.Where(p => p.Name.Contains(category));
+            }
+
+
+            if (pageIndex < 1)
+            {
+                pageIndex = 1;
+            }
+
+            decimal count = query.count();
+            int totalPages = (int)Math.Ceiling(count / pageSize);
+            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+
+            var products = query.ToList();
+
             ViewBag.Products = products;
+            ViewBag.PageIndex = pageIndex;
+            ViewBag.totalPages = totalPages;
+
+            var storeSearchModel = new StoreSearchModel()
+            {
+                Search = search,
+                Brand = brand,
+                Category = category,
+                Sort=sort
+            };
+
+            return View(storeSearchModel);
+        }
+
+        public IActionResult Details(int id)
+        {
+            var product = context.Products.Find(id);
+            if (product == null)
+            {
+                return RedirectToAction("Index", "Store");
+            }
             return View();
         }
     }

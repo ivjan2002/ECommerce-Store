@@ -33,7 +33,7 @@
                         Brand: @product.Brand, Category: @product.Category
                     </p>
                     <h4 class="mb-3">(@product.Price)$</h4>
-                    <a></a>
+                    <a role="button" asp-controller="Store" asp-action="Details" asp-route-id="@product.Id">Details</a>
                     <button>Add to Cart <i></i></button>
                 </div>
             </div>

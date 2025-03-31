@@ -1,0 +1,28 @@
+@model Product
+@{
+
+}
+
+<div class="row">
+    <div class="col-md-4 text-center">
+        <img />
+
+    </div>
+    <div class="col-md-8">
+        <h3 class="mb-3">@Model.Name</h3>
+        <h3 class="mb-3">@(Model.Price)$</h3>
+        <button>Add to Cart <i></i></button>
+        <hr />
+
+        <div class="row mb-3">
+            <div class="col-sm-3 fm-bold">Brand</div>
+            <div class="col-sm-9">@Model.Brand</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-3 fm-bold">Category</div>
+            <div class="col-sm-9">@Model.Category</div>
+        </div>
+        <div class="fw-bold">Description</div>
+        <div style="white-space:pre-line">@Model.Description</div>
+    </div>
+</div>
