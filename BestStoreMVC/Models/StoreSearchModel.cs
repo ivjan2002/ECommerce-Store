@@ -1,4 +1,4 @@
-namespace BestStoreMVC
+namespace BestStoreMVC.Models
 {
     public class StoreSearchModel
     {
