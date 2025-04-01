@@ -4,13 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BestStoreMVC.Services
 {
-    public class ApplicationDBContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDBContext(DbContextOptions options):base(options)
+        public ApplicationDbContext(DbContextOptions options) : base(options)
         {
 
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }
