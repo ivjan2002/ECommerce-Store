@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "f1t9Z2/gjhZwXSjQTpFlw9vW00tBd1yJf9JtZa8yfyg=",
+  "Hash": "owjIZZuZZaOGemyoFgn/Y+IAzABD1TQd7D6CmQJfukE=",
   "Source": "BestStoreMVC",
   "BasePath": "_content/BestStoreMVC",
   "Mode": "Default",
@@ -1193,6 +1193,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\IVANA\\source\\repos\\BestStoreMVC\\BestStoreMVC\\wwwroot\\products\\20250320195610539.jpg",
+      "SourceId": "BestStoreMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\IVANA\\source\\repos\\BestStoreMVC\\BestStoreMVC\\wwwroot\\",
+      "BasePath": "_content/BestStoreMVC",
+      "RelativePath": "products/20250320195610539.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\products\\20250320195610539.jpg"
     },
     {
       "Identity": "C:\\Users\\IVANA\\source\\repos\\BestStoreMVC\\BestStoreMVC\\wwwroot\\products\\dell_xps13.jpg",

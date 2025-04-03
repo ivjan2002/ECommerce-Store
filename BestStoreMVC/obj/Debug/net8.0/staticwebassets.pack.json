@@ -245,6 +245,10 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\IVANA\\source\\repos\\BestStoreMVC\\BestStoreMVC\\wwwroot\\products\\20250320195610539.jpg",
+      "PackagePath": "staticwebassets\\products\\20250320195610539.jpg"
+    },
+    {
       "Id": "C:\\Users\\IVANA\\source\\repos\\BestStoreMVC\\BestStoreMVC\\wwwroot\\products\\dell_xps13.jpg",
       "PackagePath": "staticwebassets\\products\\dell_xps13.jpg"
     },
