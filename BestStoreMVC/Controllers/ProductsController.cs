@@ -8,11 +8,11 @@ namespace BestStoreMVC.Controllers
     [Route("/Admin/[controller]/{action=Index}/{id?}")]
     public class ProductsController : Controller
     {
-        private readonly ApplicationDBContext context;
+        private readonly ApplicationDbContext context;
         private readonly IWebHostEnvironment environment;
         private readonly int pageSize = 5;
 
-        public ProductsController(ApplicationDBContext context,IWebHostEnvironment environment)
+        public ProductsController(ApplicationDbContext context,IWebHostEnvironment environment)
         {
             this.context = context;
             this.environment = environment;
@@ -42,7 +42,7 @@ namespace BestStoreMVC.Controllers
 
             if (column == "Name")
             {
-                if (orderBy = "asc")
+                if (orderBy == "asc")
                 {
                     query = query.OrderBy(p => p.Name);
 
@@ -54,7 +54,7 @@ namespace BestStoreMVC.Controllers
 
             } else if (column == "Brand")
             {
-                if (orderBy = "asc")
+                if (orderBy == "asc")
                 {
                     query = query.OrderBy(p => p.Brand);
 
@@ -67,7 +67,7 @@ namespace BestStoreMVC.Controllers
             }
             else if (column == "Category")
             {
-                if (orderBy = "asc")
+                if (orderBy == "asc")
                 {
                     query = query.OrderBy(p => p.Category);
 
@@ -80,7 +80,7 @@ namespace BestStoreMVC.Controllers
             }
             else if (column == "Price")
             {
-                if (orderBy = "asc")
+                if (orderBy == "asc")
                 {
                     query = query.OrderBy(p => p.Price);
 
@@ -93,7 +93,7 @@ namespace BestStoreMVC.Controllers
             }
             else if (column == "CreatedAt")
             {
-                if (orderBy = "asc")
+                if (orderBy == "asc")
                 {
                     query = query.OrderBy(p => p.CreatedAt);
 
@@ -106,7 +106,7 @@ namespace BestStoreMVC.Controllers
             }
             else
             {
-                if (orderBy = "asc")
+                if (orderBy == "asc")
                 {
                     query = query.OrderBy(p => p.Id);
 
@@ -116,8 +116,6 @@ namespace BestStoreMVC.Controllers
                     query = query.OrderByDescending(p => p.Id);
                 }
             }
-
-            query =query.OrderByDescending(p => p.Id).ToList();
 
             if (pageIndex < 1)
             {
@@ -147,7 +145,7 @@ namespace BestStoreMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(ProductDTO productDto)
+        public IActionResult Create(ProductDto productDto)
         {
             if (productDto.ImageFile == null)
             {
@@ -194,7 +192,7 @@ namespace BestStoreMVC.Controllers
                 return RedirectToAction("Index", "Products");
             }
 
-            var productDto = new ProductDTO()
+            var productDto = new ProductDto()
             {
                 Name = product.Name,
                 Brand = product.Brand,
@@ -214,7 +212,7 @@ namespace BestStoreMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(int id,ProductDTO productDto)
+        public IActionResult Edit(int id,ProductDto productDto)
         {
             var product = context.Products.Find(id);
             if (product == null)
@@ -233,7 +231,7 @@ namespace BestStoreMVC.Controllers
             string newFileName = product.ImageFileName;
             if (productDto.ImageFile != null)
             {
-                string newFileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                newFileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
                 newFileName += Path.GetExtension(productDto.ImageFile!.FileName);
 
                 string imageFullPath = environment.WebRootPath + "/products/" + newFileName;
@@ -242,7 +240,7 @@ namespace BestStoreMVC.Controllers
                     productDto.ImageFile.CopyTo(stream);
                 }
 
-                string oldImageFullPath = environment.WebRootPath + "/products/" + products.ImageFileName;
+                string oldImageFullPath = environment.WebRootPath + "/products/" + product.ImageFileName;
                 System.IO.File.Delete(oldImageFullPath);
 
             }
@@ -255,6 +253,7 @@ namespace BestStoreMVC.Controllers
             product.ImageFileName = newFileName;
 
             context.SaveChanges();
+            return RedirectToAction("Index", "Products");
 
         }
 

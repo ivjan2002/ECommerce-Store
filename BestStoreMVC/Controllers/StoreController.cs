@@ -1,22 +1,27 @@
+using BestStoreMVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using BestStoreMVC.Services;
+using System.Linq;
 
 namespace BestStoreMVC.Controllers
 {
-    public class StoreController : Controller {
+    public class StoreController : Controller
+    {
 
-        private readonly ApplicationDBContext context;
+        private readonly ApplicationDbContext context;
         private readonly int pageSize = 8;
 
-        public StoreController(ApplicationDBContext context)
+        public StoreController(ApplicationDbContext context)
         {
             this.context = context;
         }
 
-        public IActionResult Index(int pageIndex,string?search,string?brand,search?category,search?sort)
+        public IActionResult Index(int pageIndex, string? search, string? brand, string? category, string? sort)
+
         {
             IQueryable<Product> query = context.Products;
 
-            if(search!=null && search.Length > 0)
+            if (search != null && search.Length > 0)
             {
                 query = query.Where(p => p.Name.Contains(search));
             }
@@ -37,7 +42,7 @@ namespace BestStoreMVC.Controllers
                 pageIndex = 1;
             }
 
-            decimal count = query.count();
+            decimal count = query.Count();
             int totalPages = (int)Math.Ceiling(count / pageSize);
             query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
 
@@ -52,7 +57,7 @@ namespace BestStoreMVC.Controllers
                 Search = search,
                 Brand = brand,
                 Category = category,
-                Sort=sort
+                Sort = sort
             };
 
             return View(storeSearchModel);
@@ -68,3 +73,4 @@ namespace BestStoreMVC.Controllers
             return View();
         }
     }
+}
