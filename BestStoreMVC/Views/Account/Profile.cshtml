@@ -1,6 +1,6 @@
 @model ProfileDto
 @using Microsoft.AspNetCore.Identity
-@inject UserManager<ApplicationUser>
+@inject UserManager<ApplicationUser> UserManager
     UserManager
     @{
 	var appUser = await UserManager.GetUserAsync(User);

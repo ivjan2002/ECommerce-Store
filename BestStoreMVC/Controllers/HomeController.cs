@@ -7,9 +7,9 @@ namespace BestStoreMVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ApplicationDBContext context;
+        private readonly ApplicationDbContext context;
 
-        public HomeController(ApplicationDBContext context)
+        public HomeController(ApplicationDbContext context)
         {
            
         }
